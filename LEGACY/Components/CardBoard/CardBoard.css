@@ -1,0 +1,33 @@
+.cardBoard{	
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 10px;
+	padding: 10px;
+}
+
+@media screen and (min-width: 768px) and (min-height: 657px){
+	.cardBoard{
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		width: 480px;
+		padding: 1rem;
+		grid-gap: 10px;
+	}
+}
+
+@media screen and (min-width: 1024px) and (min-height: 657px){
+	.cardBoard{
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		width: auto;
+		padding: 1rem;
+		grid-gap: 20px;
+	}
+}
+
+@media screen and (min-width: 1440px){
+  .cardBoard{
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		width: auto;
+		padding: 5rem;
+		grid-gap: 20px;
+  }
+}
