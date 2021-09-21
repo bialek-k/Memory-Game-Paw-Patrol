@@ -1,4 +1,10 @@
 .CardBoard {
+  width: 100vw;
+  height: 100vh;
   display: grid;
-  padding: 20px;
+  grid-template-columns: repeat(3, 220px);
+  grid-template-rows: repeat(2, 320px);
+  gap: 15px;
+  justify-content: center;
+  align-content: center;
 }
