@@ -1,10 +1,12 @@
 import "./App.css";
-import Main from "./components/Main/Main";
+import CardBoard from "./components/CardBoard/CardBoard";
+
+import { initialCards } from "./components/CardBoard/Photos";
 
 function App() {
   return (
     <div className="App">
-      <Main />
+      <CardBoard cards={initialCards} />
     </div>
   );
 }
