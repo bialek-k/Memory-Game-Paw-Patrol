@@ -1,15 +1,17 @@
 import React from "react";
-import Card from "../Card";
+import Card from "../Card/Card";
 import classes from "./CardBoard.module.css";
 
-const CardBoard = ({ photos }) => {
-  console.log(photos);
+import { initialCards } from "../CardBoard/Photos";
 
-  return (
-    <div className={classes.CardBoard}>
-      <Card />
-    </div>
-  );
+const CardBoard = () => {
+  console.log(initialCards);
+
+  const singleCard = initialCards.map((card) => {
+    return <Card id={card.id} key={card.id} photo={card.photo} />;
+  });
+
+  return <div className={classes.CardBoard}>{singleCard}</div>;
 };
 
 export default CardBoard;
