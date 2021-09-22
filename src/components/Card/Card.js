@@ -1,26 +1,44 @@
 import React from "react";
 import classes from "../Card/Card.module.css";
 
-const Card = ({ id, cards }) => {
+const Card = ({ id, cards, setCards, photo, flipped, clickedCard }) => {
   const flipCard = (id) => {
-    const newState = cards.map((item) => {
+    const singleFlip = cards.map((item) => {
       if (item.id === id) {
-        const updateItem = {
+        const changeFlip = {
           ...item,
           flipped: !item.flipped,
         };
-        return updateItem;
+        clickedCard(changeFlip);
+        return changeFlip;
       }
       return item;
     });
-
-    console.log(newState);
-    // setCards(newState);
-    // compareHandler(newState, id);
-    // setTimeOn(true);
+    setCards(singleFlip);
   };
 
-  return <div className={classes.card} onClick={() => flipCard(id)}></div>;
+  // Change background Card
+  let cardBackground;
+  if (flipped) {
+    cardBackground = {
+      background: `url(${photo})`,
+      backgroundSize: "70%",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+    };
+  } else {
+    cardBackground = {
+      background: "rgba(192, 192, 192, 0.596)",
+    };
+  }
+
+  return (
+    <div
+      className={classes.card}
+      onClick={() => flipCard(id)}
+      style={cardBackground}
+    ></div>
+  );
 };
 
 export default Card;

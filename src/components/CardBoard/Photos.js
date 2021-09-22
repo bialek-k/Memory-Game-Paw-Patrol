@@ -6,10 +6,10 @@ import Skye from "../../photos/Skye.png";
 import Zuma from "../../photos/Zuma.png";
 
 export const initialCards = [
-  { id: 1, photo: Rocky, flipped: false },
-  { id: 2, photo: Chase, flipped: false },
-  { id: 3, photo: Marshall, flipped: false },
-  { id: 4, photo: Rubble, flipped: false },
-  { id: 5, photo: Skye, flipped: false },
-  { id: 6, photo: Zuma, flipped: false },
+  { id: 0, photo: Rocky, name: "Rocky", flipped: false },
+  { id: 1, photo: Chase, name: "Chase", flipped: false },
+  { id: 2, photo: Marshall, name: "Marshall", flipped: false },
+  { id: 3, photo: Rubble, name: "Rubble", flipped: false },
+  { id: 4, photo: Skye, name: "Skye", flipped: false },
+  { id: 5, photo: Zuma, name: "Zuma", flipped: false },
 ];
