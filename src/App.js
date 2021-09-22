@@ -1,14 +1,12 @@
 import "./App.css";
 import CardBoard from "./components/CardBoard/CardBoard";
 
-import { initialCards } from "./components/CardBoard/Photos";
-
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <CardBoard cards={initialCards} />
+      <CardBoard />
     </div>
   );
-}
+};
 
 export default App;

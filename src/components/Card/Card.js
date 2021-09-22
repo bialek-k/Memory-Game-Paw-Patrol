@@ -9,7 +9,8 @@ const Card = (props) => {
           ...item,
           flipped: !item.flipped,
         };
-        props.flippedCard(changeCardSide);
+
+        props.setCardToCompare(changeCardSide);
         return changeCardSide;
       }
       return item;
