@@ -2,26 +2,26 @@ import React from "react";
 import classes from "../Card/Card.module.css";
 
 const Card = (props) => {
-  const flipCard = (id) => {
-    const singleFlip = props.cards.map((item) => {
+  const showCard = (id) => {
+    const flipCard = props.cards.map((item) => {
       if (item.id === id) {
-        const changeFlip = {
+        const changeCardSide = {
           ...item,
           flipped: !item.flipped,
         };
-        props.clickedCard(changeFlip);
-        return changeFlip;
+        props.flippedCard(changeCardSide);
+        return changeCardSide;
       }
       return item;
     });
-    props.setCards(singleFlip);
+    props.setCards(flipCard);
   };
 
   // Change background Card
   let cardBackground;
   if (props.flipped) {
     cardBackground = {
-      background: `url(${photo})`,
+      background: `url(${props.photo})`,
       backgroundSize: "70%",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
@@ -35,7 +35,7 @@ const Card = (props) => {
   return (
     <div
       className={classes.card}
-      onClick={() => flipCard(id)}
+      onClick={() => showCard(props.id)}
       style={cardBackground}
     ></div>
   );

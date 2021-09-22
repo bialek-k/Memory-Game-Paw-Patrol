@@ -6,10 +6,16 @@ import { initialCards } from "./Photos";
 
 const CardBoard = () => {
   const [cards, setCards] = useState(initialCards);
+  const [pairCards, setPairCards] = useState();
 
-  const clickedCard = (changeFlip) => {
-    console.log(changeFlip.id);
+  const flippedCard = (clickedCard) => {
+    const idx = clickedCard.id;
+    const findedCard = cards[idx];
+
+    setPairCards([...pairCards, ...findedCard]);
   };
+
+  console.log(pairCards);
 
   const singleCard = cards.map((card, idx) => {
     return (
@@ -21,7 +27,7 @@ const CardBoard = () => {
         setCards={setCards}
         photo={card.photo}
         flipped={card.flipped}
-        clickedCard={clickedCard}
+        flippedCard={flippedCard}
       />
     );
   });
