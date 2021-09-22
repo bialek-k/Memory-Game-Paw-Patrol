@@ -1,25 +1,25 @@
 import React from "react";
 import classes from "../Card/Card.module.css";
 
-const Card = ({ id, cards, setCards, photo, flipped, clickedCard }) => {
+const Card = (props) => {
   const flipCard = (id) => {
-    const singleFlip = cards.map((item) => {
+    const singleFlip = props.cards.map((item) => {
       if (item.id === id) {
         const changeFlip = {
           ...item,
           flipped: !item.flipped,
         };
-        clickedCard(changeFlip);
+        props.clickedCard(changeFlip);
         return changeFlip;
       }
       return item;
     });
-    setCards(singleFlip);
+    props.setCards(singleFlip);
   };
 
   // Change background Card
   let cardBackground;
-  if (flipped) {
+  if (props.flipped) {
     cardBackground = {
       background: `url(${photo})`,
       backgroundSize: "70%",
