@@ -29,7 +29,17 @@ const CardBoard = () => {
   const [cardToCompare, setCardToCompare] = useState();
 
   const flippedCard = cards.filter((card) => card.flipped);
-  console.log(cardToCompare);
+
+  const idx = flippedCard.map((item) => item.id);
+  console.log(idx);
+
+  if (idx.includes(cardToCompare) && idx.length >= 2) {
+    console.log("TEN");
+  }
+
+  if (flippedCard.length === cards.length)
+    // Check if evry cards is finded END GAME
+    console.log("KONIEC GRY");
 
   const cardsOnGame = cards.map((card, idx) => {
     return (
@@ -41,6 +51,7 @@ const CardBoard = () => {
         setCards={setCards}
         photo={card.photo}
         flipped={card.flipped}
+        cardToCompare={cardToCompare}
         setCardToCompare={setCardToCompare}
       />
     );
