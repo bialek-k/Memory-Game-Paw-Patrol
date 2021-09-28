@@ -2,6 +2,34 @@ import React from "react";
 import classes from "../Card/Card.module.css";
 
 const Card = (props) => {
+  // Change background Card
+  let cardBackground;
+  if (props.flipped) {
+    cardBackground = {
+      background: `url(${props.photo})`,
+      backgroundSize: "70%",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+    };
+  } else {
+    cardBackground = {
+      background: "rgba(192, 192, 192, 0.596)",
+    };
+  }
+
+  return (
+    <div
+      className={classes.card}
+      onClick={(e) => props.setClickedCard(props.name)}
+      style={cardBackground}
+    ></div>
+  );
+};
+
+export default Card;
+
+/*
+const Card = (props) => {
   const showCard = (id) => {
     const flipCard = props.cards.map((item) => {
       if (item.id === id) {
@@ -9,13 +37,18 @@ const Card = (props) => {
           ...item,
           flipped: !item.flipped,
         };
-
-        props.setCardToCompare(changeCardSide.id);
         return changeCardSide;
       }
       return item;
     });
     props.setCards(flipCard);
+    compareHandler(flipCard, id);
+  };
+
+  // Add Card to new Array for compare
+  const compareHandler = (flipCard, id) => {
+    let clickedCard = flipCard.filter((card) => card.id === id);
+    props.setFrontCard([...props.frontCard, ...clickedCard]);
   };
 
   // Change background Card
@@ -41,5 +74,4 @@ const Card = (props) => {
     ></div>
   );
 };
-
-export default Card;
+*/

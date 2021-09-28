@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "../Card/Card";
 import classes from "./CardBoard.module.css";
 
@@ -10,36 +10,39 @@ import Skye from "../../photos/Skye.png";
 import Zuma from "../../photos/Zuma.png";
 
 const initialCards = [
-  { id: 0, photo: Rocky, flipped: false },
-  { id: 1, photo: Chase, flipped: false },
-  { id: 2, photo: Marshall, flipped: false },
-  { id: 3, photo: Rubble, flipped: false },
-  { id: 4, photo: Skye, flipped: false },
-  { id: 5, photo: Zuma, flipped: false },
-  { id: 6, photo: Rocky, flipped: false },
-  { id: 7, photo: Chase, flipped: false },
-  { id: 8, photo: Marshall, flipped: false },
-  { id: 9, photo: Rubble, flipped: false },
-  { id: 10, photo: Skye, flipped: false },
-  { id: 11, photo: Zuma, flipped: false },
+  { id: 0, photo: Rocky, name: "Rocky", flipped: false },
+  { id: 1, photo: Chase, name: "Chase", flipped: false },
+  { id: 2, photo: Marshall, name: "Marshall", flipped: false },
+  { id: 3, photo: Rubble, name: "Rubble", flipped: false },
+  { id: 4, photo: Skye, name: "Skye", flipped: false },
+  { id: 5, photo: Zuma, name: "Zuma", flipped: false },
+  { id: 6, photo: Rocky, name: "Rocky", flipped: false },
+  { id: 7, photo: Chase, name: "Chase", flipped: false },
+  { id: 8, photo: Marshall, name: "Marshall", flipped: false },
+  { id: 9, photo: Rubble, name: "Rubble", flipped: false },
+  { id: 10, photo: Skye, name: "Skye", flipped: false },
+  { id: 11, photo: Zuma, name: "Zuma", flipped: false },
 ];
 
 const CardBoard = () => {
   const [cards, setCards] = useState(initialCards);
-  const [cardToCompare, setCardToCompare] = useState();
+  const [clickedCard, setClickedCard] = useState();
 
-  const flippedCard = cards.filter((card) => card.flipped);
+  useEffect(() => {
+    console.log(clickedCard);
 
-  const idx = flippedCard.map((item) => item.id);
-  console.log(idx);
-
-  if (idx.includes(cardToCompare) && idx.length >= 2) {
-    console.log("TEN");
-  }
-
-  if (flippedCard.length === cards.length)
-    // Check if evry cards is finded END GAME
-    console.log("KONIEC GRY");
+    cards.map((card) => {
+      if (clickedCard === card.name) {
+        const changeCardSide = {
+          ...card,
+          flipped: !card.flipped,
+        };
+        console.log(changeCardSide);
+        return changeCardSide;
+      }
+      // return card;
+    });
+  }, [clickedCard]);
 
   const cardsOnGame = cards.map((card, idx) => {
     return (
@@ -47,12 +50,11 @@ const CardBoard = () => {
         id={idx}
         key={idx}
         cards={cards}
-        name={card.photo}
+        name={card.name}
         setCards={setCards}
         photo={card.photo}
         flipped={card.flipped}
-        cardToCompare={cardToCompare}
-        setCardToCompare={setCardToCompare}
+        setClickedCard={setClickedCard}
       />
     );
   });
