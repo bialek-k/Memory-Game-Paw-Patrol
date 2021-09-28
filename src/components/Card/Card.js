@@ -1,34 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "../Card/Card.module.css";
 
-const Card = (props) => {
-  // Change background Card
-  let cardBackground;
-  if (props.flipped) {
-    cardBackground = {
-      background: `url(${props.photo})`,
-      backgroundSize: "70%",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-    };
-  } else {
-    cardBackground = {
-      background: "rgba(192, 192, 192, 0.596)",
-    };
-  }
-
-  return (
-    <div
-      className={classes.card}
-      onClick={(e) => props.setClickedCard(props.name)}
-      style={cardBackground}
-    ></div>
-  );
-};
-
-export default Card;
-
-/*
 const Card = (props) => {
   const showCard = (id) => {
     const flipCard = props.cards.map((item) => {
@@ -48,7 +20,7 @@ const Card = (props) => {
   // Add Card to new Array for compare
   const compareHandler = (flipCard, id) => {
     let clickedCard = flipCard.filter((card) => card.id === id);
-    props.setFrontCard([...props.frontCard, ...clickedCard]);
+    props.setClickedCard([...clickedCard, ...props.clickedCard]);
   };
 
   // Change background Card
@@ -74,4 +46,5 @@ const Card = (props) => {
     ></div>
   );
 };
-*/
+
+export default Card;

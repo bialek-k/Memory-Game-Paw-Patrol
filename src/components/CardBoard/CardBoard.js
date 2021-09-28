@@ -26,23 +26,17 @@ const initialCards = [
 
 const CardBoard = () => {
   const [cards, setCards] = useState(initialCards);
-  const [clickedCard, setClickedCard] = useState();
+  const [clickedCard, setClickedCard] = useState([]);
 
-  useEffect(() => {
-    console.log(clickedCard);
+  if (clickedCard.length >= 2) {
+    if (clickedCard[0].name === clickedCard[1].name) {
+      console.log("ta karta");
+    } else {
+      console.log("szukaj dalej");
+    }
+  }
 
-    cards.map((card) => {
-      if (clickedCard === card.name) {
-        const changeCardSide = {
-          ...card,
-          flipped: !card.flipped,
-        };
-        console.log(changeCardSide);
-        return changeCardSide;
-      }
-      // return card;
-    });
-  }, [clickedCard]);
+  // check for end game
 
   const cardsOnGame = cards.map((card, idx) => {
     return (
@@ -54,6 +48,7 @@ const CardBoard = () => {
         setCards={setCards}
         photo={card.photo}
         flipped={card.flipped}
+        clickedCard={clickedCard}
         setClickedCard={setClickedCard}
       />
     );
