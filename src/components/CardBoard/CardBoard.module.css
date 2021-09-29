@@ -2,8 +2,8 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: repeat(4, 220px);
-  grid-template-rows: repeat(3, 320px);
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(3, 160px);
   gap: 15px;
   justify-content: center;
   align-content: center;
