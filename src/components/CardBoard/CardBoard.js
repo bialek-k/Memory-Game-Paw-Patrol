@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Card from "../Card/Card";
 import classes from "./CardBoard.module.css";
 
 const CardBoard = (props) => {
