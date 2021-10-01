@@ -4,12 +4,14 @@ import CardBoard from "./components/CardBoard/CardBoard";
 import Card from "./components/Card/Card";
 
 import { initialCards } from "./components/Card/Photos";
+import Final from "./components/Final/Final";
 
 const App = () => {
   const [cards, setCards] = useState(initialCards);
   const [clickedCard, setClickedCard] = useState([]);
   const [finalCards, setFinalCards] = useState(initialCards);
   const [cardFound, setCardFound] = useState([]);
+  const [endGame, setEndGame] = useState(false);
 
   // finding pairs of cards
   useEffect(() => {
@@ -31,7 +33,19 @@ const App = () => {
     }
   });
 
-  useEffect(())
+  // check final
+  useEffect(() => {
+    const cardsOpened = finalCards.filter((card) => card.flipped);
+    if (cardsOpened.length > 11) {
+      setEndGame(true);
+    }
+  });
+
+  const resetGameHandler = () => {
+    setCards(initialCards);
+    setFinalCards(initialCards);
+    setEndGame(false);
+  };
 
   const cardsOnTable = cards.map((card, idx) => {
     return (
@@ -51,7 +65,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <CardBoard>{cardsOnTable}</CardBoard>
+      {endGame && <Final resetGame={resetGameHandler} />}
+      {!endGame && <CardBoard>{cardsOnTable}</CardBoard>}
     </div>
   );
 };
