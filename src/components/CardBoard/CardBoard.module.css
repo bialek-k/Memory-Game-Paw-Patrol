@@ -9,8 +9,9 @@
   align-content: center;
 }
 
-/* .CardBoard {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-} */
+@media screen and (min-width: 1220px) {
+  .CardBoard {
+    grid-template-columns: repeat(4, 160px);
+    grid-template-rows: repeat(3, 240px);
+  }
+}
