@@ -42,9 +42,11 @@ const App = () => {
   });
 
   const resetGameHandler = () => {
-    setCards(initialCards);
-    setFinalCards(initialCards);
-    setEndGame(false);
+    setTimeout(() => {
+      setCards(initialCards);
+      setFinalCards(initialCards);
+      setEndGame(false);
+    }, 1000);
   };
 
   const cardsOnTable = cards.map((card, idx) => {
@@ -65,6 +67,7 @@ const App = () => {
 
   return (
     <div className="App">
+      {/* <Final /> */}
       {endGame && <Final resetGame={resetGameHandler} />}
       {!endGame && <CardBoard>{cardsOnTable}</CardBoard>}
     </div>

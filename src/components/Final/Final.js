@@ -9,7 +9,11 @@ const Final = (props) => {
 
   return (
     <div className={classes.container}>
-      <h1 onClick={resetGame}>Wygrałeś!</h1>
+      <h1>Pięknie!</h1>
+      <div className={classes.buttons}>
+        <button onClick={resetGame}>Gram dalej</button>
+        <button>Koniec gry</button>
+      </div>
     </div>
   );
 };
