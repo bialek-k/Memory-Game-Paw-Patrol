@@ -5,13 +5,22 @@ import Card from "./components/Card/Card";
 
 import { initialCards } from "./components/Card/Photos";
 import Final from "./components/Final/Final";
+import Login from "./components/Login/Login";
 
 const App = () => {
   const [cards, setCards] = useState(initialCards);
   const [clickedCard, setClickedCard] = useState([]);
+  const [firstLoad, setFirstLoad] = useState(false);
   const [finalCards, setFinalCards] = useState(initialCards);
   const [cardFound, setCardFound] = useState([]);
   const [endGame, setEndGame] = useState(false);
+
+  useEffect(() => {
+    setFirstLoad(true);
+    setTimeout(() => {
+      setFirstLoad(false);
+    }, 2500);
+  }, []);
 
   // finding pairs of cards
   useEffect(() => {
@@ -37,7 +46,7 @@ const App = () => {
   useEffect(() => {
     const cardsOpened = finalCards.filter((card) => card.flipped);
     if (cardsOpened.length > 11) {
-      setEndGame(true);
+      setTimeout(() => setEndGame(true), 2000);
     }
   });
 
@@ -50,6 +59,8 @@ const App = () => {
   };
 
   const cardsOnTable = cards.map((card, idx) => {
+    let showAll = firstLoad ? true : card.flipped;
+
     return (
       <Card
         id={idx}
@@ -58,7 +69,7 @@ const App = () => {
         name={card.name}
         setCards={setCards}
         photo={card.photo}
-        flipped={card.flipped}
+        flipped={showAll}
         clickedCard={clickedCard}
         setClickedCard={setClickedCard}
       />
@@ -67,8 +78,8 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* <Final /> */}
-      {endGame && <Final resetGame={resetGameHandler} />}
+      <Login />
+      {endGame && !firstLoad ? <Final resetGame={resetGameHandler} /> : null}
       {!endGame && <CardBoard>{cardsOnTable}</CardBoard>}
     </div>
   );

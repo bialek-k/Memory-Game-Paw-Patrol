@@ -26,7 +26,8 @@ const Card = (props) => {
   // style of flipping card
   const cardBackStyle = {
     transform: "rotateY(180deg)",
-    background: "rgba(192, 192, 192, 0.596)",
+    background: "#099eda",
+    // background: "rgba(192, 192, 192, 0.596)",
     transition: "0.6s",
     backgroundSize: "25%",
     backgroundPosition: "bottom",
