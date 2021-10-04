@@ -6,6 +6,7 @@ import Card from "./components/Card/Card";
 import { initialCards } from "./components/Card/Photos";
 import Final from "./components/Final/Final";
 import Login from "./components/Login/Login";
+import Player from "./components/Player/Player";
 
 const App = () => {
   const [cards, setCards] = useState(initialCards);
@@ -14,6 +15,12 @@ const App = () => {
   const [finalCards, setFinalCards] = useState(initialCards);
   const [cardFound, setCardFound] = useState([]);
   const [endGame, setEndGame] = useState(false);
+
+  const [playerName, setPlayerName] = useState("");
+  const [login, setLogin] = useState(true);
+  const [time, setTime] = useState(0);
+  const [timeOn, setTimeOn] = useState(false);
+  const [moves, setMoves] = useState(0);
 
   useEffect(() => {
     setFirstLoad(true);
@@ -39,6 +46,7 @@ const App = () => {
           setCards([...finalCards]);
         }, 500);
       }
+      setMoves(moves + 1);
     }
   });
 
@@ -58,6 +66,15 @@ const App = () => {
     }, 1000);
   };
 
+  const loginModal = (
+    <Login
+      playerName={playerName}
+      setPlayerName={setPlayerName}
+      login={login}
+      setLogin={setLogin}
+    />
+  );
+
   const cardsOnTable = cards.map((card, idx) => {
     let showAll = firstLoad ? true : card.flipped;
 
@@ -76,11 +93,25 @@ const App = () => {
     );
   });
 
+  const gameBoard = (
+    <div>
+      <Player
+        time={time}
+        setTime={setTime}
+        timeOn={timeOn}
+        playerName={playerName}
+        moves={moves}
+      />
+      <CardBoard>{cardsOnTable}</CardBoard>
+    </div>
+  );
+
   return (
     <div className="App">
-      <Login />
+      {login && loginModal}
       {endGame && !firstLoad ? <Final resetGame={resetGameHandler} /> : null}
-      {!endGame && <CardBoard>{cardsOnTable}</CardBoard>}
+      {/* {!endGame && <CardBoard>{cardsOnTable}</CardBoard>} */}
+      {!endGame && gameBoard}
     </div>
   );
 };

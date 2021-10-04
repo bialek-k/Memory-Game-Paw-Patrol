@@ -1,33 +1,33 @@
 import React, { useState } from "react";
 import "./Login.css";
 
-const Login = ({ playerName, setLogin, setPlayerName, setStartGame }) => {
+const Login = (props) => {
   const [error, setError] = useState("");
 
   const inputName = (e) => {
     e.preventDefault();
-    setPlayerName(e.target.value);
+    props.setPlayerName(e.target.value);
   };
 
   const submitName = (e) => {
     e.preventDefault();
-    if (playerName === "") {
+    if (props.playerName === "") {
       setError("ERROR");
       setTimeout(() => {
         setError("");
       }, 1800);
     } else {
-      setLogin(false);
-      setStartGame(true);
+      props.setLogin(false);
+      // props.setStartGame(true);
     }
   };
 
   const errorMsg = <div className="error">Please write your name</div>;
 
   const guestName = () => {
-    setPlayerName("Great Player");
-    setLogin(false);
-    setStartGame(true);
+    props.setPlayerName("Great Player");
+    props.setLogin(false);
+    // props.setStartGame(true);
   };
 
   return (
