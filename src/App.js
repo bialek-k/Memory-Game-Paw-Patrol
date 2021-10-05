@@ -75,43 +75,25 @@ const App = () => {
     />
   );
 
-  const cardsOnTable = cards.map((card, idx) => {
-    let showAll = firstLoad ? true : card.flipped;
-
-    return (
-      <Card
-        id={idx}
-        key={idx}
+  const game = (
+    <>
+      <CardBoard
         cards={cards}
-        name={card.name}
+        firstLoad={firstLoad}
         setCards={setCards}
-        photo={card.photo}
-        flipped={showAll}
         clickedCard={clickedCard}
         setClickedCard={setClickedCard}
       />
-    );
-  });
-
-  const gameBoard = (
-    <div>
-      <Player
-        time={time}
-        setTime={setTime}
-        timeOn={timeOn}
-        playerName={playerName}
-        moves={moves}
-      />
-      <CardBoard>{cardsOnTable}</CardBoard>
-    </div>
+    </>
   );
 
   return (
     <div className="App">
-      {login && loginModal}
-      {endGame && !firstLoad ? <Final resetGame={resetGameHandler} /> : null}
+      {game}
+      {/* {login && loginModal} */}
+      {/* {endGame && !firstLoad ? <Final resetGame={resetGameHandler} /> : null} */}
       {/* {!endGame && <CardBoard>{cardsOnTable}</CardBoard>} */}
-      {!endGame && gameBoard}
+      {/* {!endGame && gameBoard} */}
     </div>
   );
 };
