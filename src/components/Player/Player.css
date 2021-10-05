@@ -23,7 +23,7 @@
   align-items: flex-end;
   font-size: 1.4rem;
 }
-
+/* 
 @media screen and (min-width: 768px) {
   .container {
     height: 120px;
@@ -47,10 +47,10 @@
   .player {
     font-size: 1.9rem;
   }
-}
+} */
 
-@media screen and (min-width: 1440px) {
+/* @media screen and (min-width: 1440px) {
   .container {
     width: 950px;
   }
-}
+} */

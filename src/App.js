@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import CardBoard from "./components/CardBoard/CardBoard";
-import Card from "./components/Card/Card";
-
 import { initialCards } from "./components/Card/Photos";
+
+import CardBoard from "./components/CardBoard/CardBoard";
+import Game from "./components/Game/Game";
 import Final from "./components/Final/Final";
 import Login from "./components/Login/Login";
 import Player from "./components/Player/Player";
@@ -15,7 +15,6 @@ const App = () => {
   const [finalCards, setFinalCards] = useState(initialCards);
   const [cardFound, setCardFound] = useState([]);
   const [endGame, setEndGame] = useState(false);
-
   const [playerName, setPlayerName] = useState("");
   const [login, setLogin] = useState(true);
   const [time, setTime] = useState(0);
@@ -26,6 +25,7 @@ const App = () => {
     setFirstLoad(true);
     setTimeout(() => {
       setFirstLoad(false);
+      setTimeOn(true);
     }, 2500);
   }, []);
 
@@ -44,7 +44,7 @@ const App = () => {
         setClickedCard([]);
         setTimeout(() => {
           setCards([...finalCards]);
-        }, 500);
+        }, 1000);
       }
       setMoves(moves + 1);
     }
@@ -54,7 +54,10 @@ const App = () => {
   useEffect(() => {
     const cardsOpened = finalCards.filter((card) => card.flipped);
     if (cardsOpened.length > 11) {
-      setTimeout(() => setEndGame(true), 2000);
+      setTimeout(() => {
+        setEndGame(true);
+        setTimeOn(false);
+      }, 2000);
     }
   });
 
@@ -75,26 +78,8 @@ const App = () => {
     />
   );
 
-  const cardsOnTable = cards.map((card, idx) => {
-    let showAll = firstLoad ? true : card.flipped;
-
-    return (
-      <Card
-        id={idx}
-        key={idx}
-        cards={cards}
-        name={card.name}
-        setCards={setCards}
-        photo={card.photo}
-        flipped={showAll}
-        clickedCard={clickedCard}
-        setClickedCard={setClickedCard}
-      />
-    );
-  });
-
   const gameBoard = (
-    <div>
+    <>
       <Player
         time={time}
         setTime={setTime}
@@ -102,17 +87,24 @@ const App = () => {
         playerName={playerName}
         moves={moves}
       />
-      <CardBoard>{cardsOnTable}</CardBoard>
-    </div>
+      <CardBoard
+        cards={cards}
+        setCards={setCards}
+        clickedCard={clickedCard}
+        setClickedCard={setClickedCard}
+        firstLoad={firstLoad}
+      />
+    </>
   );
 
   return (
-    <div className="App">
-      {login && loginModal}
-      {endGame && !firstLoad ? <Final resetGame={resetGameHandler} /> : null}
-      {/* {!endGame && <CardBoard>{cardsOnTable}</CardBoard>} */}
-      {!endGame && gameBoard}
-    </div>
+    <>
+      <Game>
+        {endGame && !firstLoad ? <Final resetGame={resetGameHandler} /> : null}
+        {login && loginModal}
+        {!endGame && !login ? gameBoard : null}
+      </Game>
+    </>
   );
 };
 
