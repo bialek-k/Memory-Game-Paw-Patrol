@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./CardBoard.module.css";
 
 import Card from "../Card/Card";

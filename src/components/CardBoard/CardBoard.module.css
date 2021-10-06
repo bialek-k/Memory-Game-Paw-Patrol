@@ -1,6 +1,7 @@
 .CardBoard {
   width: 100vw;
-  height: 100vh;
+  /* height: 100%; */
+  margin-top: 100px;
   display: grid;
   grid-template-columns: repeat(4, 100px);
   grid-template-rows: repeat(3, 160px);

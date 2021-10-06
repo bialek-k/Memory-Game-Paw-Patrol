@@ -1,11 +1,9 @@
-.App {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
-  height: 100vh;
+* {
+  font-family: GROBOLD, sans-serif;
 }
 
-h1 {
-  font-family: GROBOLD, sans-serif;
+.App {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
