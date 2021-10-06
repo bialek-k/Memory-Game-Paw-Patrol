@@ -4,8 +4,6 @@
   justify-content: center;
   align-items: center;
   background-color: #099eda;
-
-  /* width: 100vw; */
   height: 100vh;
 }
 
@@ -51,6 +49,7 @@ h1 {
   color: white;
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
 }
+
 .stats span {
   margin: 5px 0px;
 }
@@ -58,5 +57,5 @@ h1 {
 .container h1 {
   font-size: 4rem;
   color: white;
-  letter-spacing: 3px;
+  letter-spacing: 5px;
 }

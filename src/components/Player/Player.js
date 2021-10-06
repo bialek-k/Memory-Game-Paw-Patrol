@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Player.css";
 
 export const Player = ({ time, setTime, timeOn, playerName, moves }) => {
@@ -19,17 +19,19 @@ export const Player = ({ time, setTime, timeOn, playerName, moves }) => {
   const getSec = () => Math.floor((time / 1000) % 60);
 
   return (
-    <div className="container">
-      <div className="player">{playerName}</div>
-      <div className="player-stats">
-        <div>
-          <span>Time: </span>
-          <span></span>
-          <span>{getSec()} sec</span>
+    <>
+      <div className="container">
+        <div className="player">{playerName}</div>
+        <div className="player-stats">
+          <div>
+            <span>Time: </span>
+            <span></span>
+            <span>{getSec()} sec</span>
+          </div>
+          <span>Moves: {moves}</span>
         </div>
-        <span>Moves: {moves}</span>
       </div>
-    </div>
+    </>
   );
 };
 

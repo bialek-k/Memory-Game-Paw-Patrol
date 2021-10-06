@@ -9,10 +9,10 @@ const Final = (props) => {
 
   return (
     <div className={classes.container}>
-      <h1>Pięknie! {props.playerName}</h1>
+      <h1>Super!{props.playerName}</h1>
       <div className={classes.stats}>
         <span>Your time: 15s</span>
-        <span>You make 8 moves</span>
+        <span>You make {props.moves} moves</span>
       </div>
       <div className={classes.buttons}>
         <button className={classes.reset} onClick={resetGame}>

@@ -1,7 +1,12 @@
 import React from "react";
 import classes from "../Card/Card.module.css";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestion } from "@fortawesome/free-solid-svg-icons";
+
 const Card = (props) => {
+  const questionMark = <FontAwesomeIcon icon={faQuestion} />;
+
   const showCard = (e, id) => {
     const flipCard = props.cards.map((item) => {
       if (item.id === id) {
@@ -47,7 +52,9 @@ const Card = (props) => {
       className={classes.card}
       onClick={(e) => showCard(e, props.id)}
       style={props.flipped ? cardFrontStyle : cardBackStyle}
-    ></div>
+    >
+      {!props.flipped && <div className={classes.question}>?</div>}
+    </div>
   );
 };
 

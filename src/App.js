@@ -21,13 +21,13 @@ const App = () => {
   const [timeOn, setTimeOn] = useState(false);
   const [moves, setMoves] = useState(0);
 
-  useEffect(() => {
-    setFirstLoad(true);
-    setTimeout(() => {
-      setFirstLoad(false);
-      setTimeOn(true);
-    }, 2500);
-  }, []);
+  // useEffect(() => {
+  //   setFirstLoad(true);
+  //   setTimeout(() => {
+  //     setFirstLoad(false);
+  //     setTimeOn(true);
+  //   }, 2500);
+  // }, []);
 
   // finding pairs of cards
   useEffect(() => {
@@ -48,7 +48,7 @@ const App = () => {
       }
       setMoves(moves + 1);
     }
-  });
+  }, [clickedCard, moves, cards, finalCards]);
 
   // check final
   useEffect(() => {
@@ -65,6 +65,7 @@ const App = () => {
     setTimeout(() => {
       setCards(initialCards);
       setFinalCards(initialCards);
+      setMoves(0);
       setEndGame(false);
     }, 1000);
   };
@@ -100,7 +101,9 @@ const App = () => {
   return (
     <>
       <Game>
-        {endGame && !firstLoad ? <Final resetGame={resetGameHandler} /> : null}
+        {endGame && !firstLoad ? (
+          <Final resetGame={resetGameHandler} moves={moves} />
+        ) : null}
         {login && loginModal}
         {!endGame && !login ? gameBoard : null}
       </Game>

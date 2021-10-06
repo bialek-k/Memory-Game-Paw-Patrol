@@ -9,6 +9,17 @@
   transition: "0.6s";
 }
 
+.question {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: white;
+  transform: rotateY(180deg);
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+}
+
 /*
 Color pallete
 	#bd221f

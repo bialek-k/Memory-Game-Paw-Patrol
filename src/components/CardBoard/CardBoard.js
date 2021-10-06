@@ -22,12 +22,7 @@ const CardBoard = (props) => {
     );
   });
 
-  return (
-    <div className={classes.CardBoard}>
-      <Player />
-      {cardsOnTable}
-    </div>
-  );
+  return <div className={classes.CardBoard}>{cardsOnTable}</div>;
 };
 
 export default CardBoard;
