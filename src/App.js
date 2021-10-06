@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import classes from "./App.module.css";
 import { initialCards } from "./components/Card/Photos";
 
 import CardBoard from "./components/CardBoard/CardBoard";
@@ -80,7 +80,7 @@ const App = () => {
   );
 
   const gameBoard = (
-    <>
+    <div className={classes.gameBoard}>
       <Player
         time={time}
         setTime={setTime}
@@ -95,17 +95,18 @@ const App = () => {
         setClickedCard={setClickedCard}
         firstLoad={firstLoad}
       />
-    </>
+    </div>
   );
 
   return (
     <>
       <Game>
-        {endGame && !firstLoad ? (
+        {gameBoard}
+        {/* {endGame && !firstLoad ? (
           <Final resetGame={resetGameHandler} moves={moves} />
         ) : null}
         {login && loginModal}
-        {!endGame && !login ? gameBoard : null}
+        {!endGame && !login ? gameBoard : null} */}
       </Game>
     </>
   );

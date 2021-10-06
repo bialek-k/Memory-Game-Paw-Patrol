@@ -1,0 +1,16 @@
+.App {
+  background-color: #fee301;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.gameBoard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 600px;
+  background-color: red;
+}

@@ -1,18 +1,18 @@
 .CardBoard {
   width: 100vw;
-  /* height: 100%; */
+  /* height: 100vh; */
   margin-top: 100px;
   display: grid;
   grid-template-columns: repeat(4, 100px);
   grid-template-rows: repeat(3, 160px);
   gap: 25px;
   justify-content: center;
-  align-content: center;
+  /* align-items: center; */
 }
 
-@media screen and (min-width: 1220px) {
+@media screen and (min-width: 1350px) {
   .CardBoard {
-    grid-template-columns: repeat(4, 160px);
-    grid-template-rows: repeat(3, 240px);
+    grid-template-columns: repeat(4, 120px);
+    grid-template-rows: repeat(3, 170px);
   }
 }
