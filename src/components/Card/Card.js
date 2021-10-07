@@ -1,12 +1,7 @@
 import React from "react";
 import classes from "../Card/Card.module.css";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuestion } from "@fortawesome/free-solid-svg-icons";
-
 const Card = (props) => {
-  const questionMark = <FontAwesomeIcon icon={faQuestion} />;
-
   const showCard = (e, id) => {
     const flipCard = props.cards.map((item) => {
       if (item.id === id) {

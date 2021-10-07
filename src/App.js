@@ -99,16 +99,16 @@ const App = () => {
   );
 
   return (
-    <>
+    <div className={classes.wrapper}>
       <Game>
-        {gameBoard}
-        {/* {endGame && !firstLoad ? (
+        {/* {gameBoard} */}
+        {endGame && !firstLoad ? (
           <Final resetGame={resetGameHandler} moves={moves} />
         ) : null}
         {login && loginModal}
-        {!endGame && !login ? gameBoard : null} */}
+        {!endGame && !login ? gameBoard : null}
       </Game>
-    </>
+    </div>
   );
 };
 

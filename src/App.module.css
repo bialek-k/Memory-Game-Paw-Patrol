@@ -1,16 +1,22 @@
-.App {
-  background-color: #fee301;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.gameBoard {
+.wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgb(121, 179, 245);
+  height: 100vh;
+}
+
+.gameBoard {
+  display: inherit;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  margin: 0 auto;
   width: 600px;
-  background-color: red;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 15px;
+  /* border: 1px solid rgba(0, 0, 0, 0.137); */
+  -webkit-box-shadow: -1px 9px 22px -9px rgba(66, 68, 90, 1);
+  -moz-box-shadow: -1px 9px 22px -9px rgba(66, 68, 90, 1);
+  box-shadow: -1px 9px 22px -9px rgba(66, 68, 90, 1);
 }
