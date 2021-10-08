@@ -31,6 +31,10 @@ const App = () => {
 
   // finding pairs of cards
   useEffect(() => {
+    if (clickedCard.length > 2) {
+      console.log("za dużo");
+    }
+
     if (clickedCard.length > 1) {
       if (
         clickedCard[0].id !== clickedCard[1].id &&
@@ -54,10 +58,11 @@ const App = () => {
   useEffect(() => {
     const cardsOpened = finalCards.filter((card) => card.flipped);
     if (cardsOpened.length > 11) {
-      setTimeout(() => {
-        setEndGame(true);
-        setTimeOn(false);
-      }, 2000);
+      // setTimeout(() => {
+      setCardFound([]);
+      setEndGame(true);
+      setTimeOn(false);
+      // }, 1500);
     }
   });
 
@@ -65,9 +70,11 @@ const App = () => {
     setTimeout(() => {
       setCards(initialCards);
       setFinalCards(initialCards);
+      setClickedCard([]);
+      setCardFound([]);
       setMoves(0);
       setEndGame(false);
-    }, 1000);
+    }, 1700);
   };
 
   const loginModal = (
@@ -102,11 +109,11 @@ const App = () => {
     <div className={classes.wrapper}>
       <Game>
         {/* {gameBoard} */}
+        {!endGame && !login ? gameBoard : null}
         {endGame && !firstLoad ? (
           <Final resetGame={resetGameHandler} moves={moves} />
         ) : null}
         {login && loginModal}
-        {!endGame && !login ? gameBoard : null}
       </Game>
     </div>
   );

@@ -7,7 +7,12 @@
 .login-wrapper {
   display: flex;
   flex-direction: column;
-  background-color: #099eda;
+  /* background-color: #099eda; */
+  background: linear-gradient(
+    0deg,
+    rgba(8, 134, 184, 1) 0%,
+    rgba(0, 204, 245, 1) 100%
+  );
   font-family: GROBOLD;
   justify-content: center;
   align-items: center;
