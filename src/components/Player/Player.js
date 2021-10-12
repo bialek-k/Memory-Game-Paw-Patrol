@@ -1,7 +1,7 @@
 import React from "react";
 import "./Player.css";
 
-export const Player = ({ time, setTime, timeOn, playerName, moves }) => {
+export const Player = ({ time, setTime, timeOn, playerName, moves, round }) => {
   // Something is wrong with this
 
   // useEffect(() => {
@@ -22,6 +22,9 @@ export const Player = ({ time, setTime, timeOn, playerName, moves }) => {
     <>
       <div className="container">
         <div className="player">{playerName}</div>
+        <div className="round">
+          <span>Round: {round}</span>
+        </div>
         <div className="player-stats">
           <div>
             <span>Time: </span>

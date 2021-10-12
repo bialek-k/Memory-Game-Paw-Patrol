@@ -20,6 +20,7 @@ const App = () => {
   const [time, setTime] = useState(0);
   const [timeOn, setTimeOn] = useState(false);
   const [moves, setMoves] = useState(0);
+  const [round, setRound] = useState(1);
 
   // useEffect(() => {
   //   setFirstLoad(true);
@@ -74,6 +75,7 @@ const App = () => {
       setCardFound([]);
       setMoves(0);
       setEndGame(false);
+      setRound(round + 1);
     }, 1700);
   };
 
@@ -94,6 +96,7 @@ const App = () => {
         timeOn={timeOn}
         playerName={playerName}
         moves={moves}
+        round={round}
       />
       <CardBoard
         cards={cards}
@@ -111,7 +114,7 @@ const App = () => {
         {/* {gameBoard} */}
         {!endGame && !login ? gameBoard : null}
         {endGame && !firstLoad ? (
-          <Final resetGame={resetGameHandler} moves={moves} />
+          <Final resetGame={resetGameHandler} moves={moves} round={round} />
         ) : null}
         {login && loginModal}
       </Game>

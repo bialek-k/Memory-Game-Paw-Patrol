@@ -13,6 +13,7 @@ const Final = (props) => {
       <div className={classes.stats}>
         <span>Your time: 15s</span>
         <span>You make {props.moves} moves</span>
+        <span>in {props.round} rounds</span>
       </div>
       <div className={classes.buttons}>
         <button className={classes.reset} onClick={resetGame}>
