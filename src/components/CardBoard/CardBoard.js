@@ -5,6 +5,7 @@ import Card from "../Card/Card";
 import Player from "../Player/Player";
 
 const CardBoard = (props) => {
+  console.log("cardboard:", props.cards);
   const cardsOnTable = props.cards.map((card, idx) => {
     let showAll = props.firstLoad ? true : card.flipped;
     return (

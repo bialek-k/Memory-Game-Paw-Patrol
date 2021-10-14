@@ -8,8 +8,14 @@ import Final from "./components/Final/Final";
 import Login from "./components/Login/Login";
 import Player from "./components/Player/Player";
 
+/*
+ initialCards.sort(() => Math.random() - 0.4)
+*/
+
 const App = () => {
-  const [cards, setCards] = useState(initialCards);
+  const [cards, setCards] = useState(
+    initialCards.sort(() => Math.random() - 0.4)
+  );
   const [clickedCard, setClickedCard] = useState([]);
   const [firstLoad, setFirstLoad] = useState(false);
   const [finalCards, setFinalCards] = useState(initialCards);
@@ -22,29 +28,17 @@ const App = () => {
   const [moves, setMoves] = useState(0);
   const [round, setRound] = useState(1);
 
-  // useEffect(() => {
-  //   setFirstLoad(true);
-  //   setTimeout(() => {
-  //     setFirstLoad(false);
-  //     setTimeOn(true);
-  //   }, 2500);
-  // }, []);
-
   // finding pairs of cards
   useEffect(() => {
-    if (clickedCard.length > 2) {
-      console.log("za dużo");
-    }
-
-    if (clickedCard.length > 1) {
+    if (clickedCard.length > 1 && clickedCard.length < 3) {
       if (
         clickedCard[0].id !== clickedCard[1].id &&
         clickedCard[0].name === clickedCard[1].name
       ) {
         const cardToFinal = clickedCard[1];
         setCardFound([cardToFinal]);
-        setClickedCard([]);
         setFinalCards([...cards]);
+        setClickedCard([]);
       } else {
         setClickedCard([]);
         setTimeout(() => {
@@ -53,7 +47,7 @@ const App = () => {
       }
       setMoves(moves + 1);
     }
-  }, [clickedCard, moves, cards, finalCards]);
+  });
 
   // check final
   useEffect(() => {
@@ -65,7 +59,7 @@ const App = () => {
       setTimeOn(false);
       // }, 1500);
     }
-  });
+  }, [finalCards, endGame, timeOn]);
 
   const resetGameHandler = () => {
     setTimeout(() => {
@@ -111,7 +105,6 @@ const App = () => {
   return (
     <div className={classes.wrapper}>
       <Game>
-        {/* {gameBoard} */}
         {!endGame && !login ? gameBoard : null}
         {endGame && !firstLoad ? (
           <Final resetGame={resetGameHandler} moves={moves} round={round} />
