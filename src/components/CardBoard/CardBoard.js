@@ -2,10 +2,12 @@ import React, { useEffect } from "react";
 import classes from "./CardBoard.module.css";
 
 import Card from "../Card/Card";
-import Player from "../Player/Player";
 
 const CardBoard = (props) => {
-  console.log("cardboard:", props.cards);
+  useEffect(() => {
+    console.log("cardboard.js", props.cards);
+  }, []);
+
   const cardsOnTable = props.cards.map((card, idx) => {
     let showAll = props.firstLoad ? true : card.flipped;
     return (

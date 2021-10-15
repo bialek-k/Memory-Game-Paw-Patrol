@@ -3,10 +3,10 @@ import classes from "../Card/Card.module.css";
 
 const Card = (props) => {
   const showCard = (e, id) => {
+    console.log(e.target);
     const flipCard = props.cards.map((item) => {
-      console.log(props.cards);
       if (item.id === id) {
-        console.log(item);
+        console.log("item", item);
         const changeCardSide = {
           ...item,
           flipped: !item.flipped,
@@ -15,6 +15,7 @@ const Card = (props) => {
       }
       return item;
     });
+    console.log(flipCard);
     props.setCards(flipCard);
     compareHandler(flipCard, id);
   };
@@ -48,13 +49,10 @@ const Card = (props) => {
     <div
       className={classes.card}
       style={props.flipped ? cardFrontStyle : cardBackStyle}
+      onClick={(e) => showCard(e, props.id)}
     >
       {!props.flipped && (
-        <div
-          className={classes.question}
-          onClick={(e) => showCard(e, props.id)}
-          id={props.id}
-        >
+        <div className={classes.question} id={props.id}>
           ?
         </div>
       )}
