@@ -3,9 +3,9 @@ import classes from "../Card/Card.module.css";
 
 const Card = (props) => {
   const showCard = (e, id) => {
-    console.log(e.target);
+    const index = parseInt(e.target.id);
     const flipCard = props.cards.map((item) => {
-      if (item.id === id) {
+      if (item.id === index) {
         console.log("item", item);
         const changeCardSide = {
           ...item,
@@ -18,6 +18,20 @@ const Card = (props) => {
     console.log(flipCard);
     props.setCards(flipCard);
     compareHandler(flipCard, id);
+  };
+
+  const showSecCard = (e) => {
+    const index = parseInt(e.target.id);
+    // console.log("klik", index);
+    const flipCard = props.cards.map((item, id, arr) => {
+      if (item.id === index) {
+        const clickedCard = arr[index];
+        clickedCard.flipped = !clickedCard.flipped;
+        return clickedCard;
+      }
+      return arr[index];
+    });
+    console.log(flipCard);
   };
 
   // Add Card to new Array for compare
@@ -49,7 +63,7 @@ const Card = (props) => {
     <div
       className={classes.card}
       style={props.flipped ? cardFrontStyle : cardBackStyle}
-      onClick={(e) => showCard(e, props.id)}
+      onClick={(e) => showSecCard(e, props.id)}
     >
       {!props.flipped && (
         <div className={classes.question} id={props.id}>
