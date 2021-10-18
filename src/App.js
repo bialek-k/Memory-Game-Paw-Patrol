@@ -109,11 +109,12 @@ const App = () => {
   return (
     <div className={classes.wrapper}>
       <Game>
-        {!endGame && !login ? gameBoard : null}
-        {endGame && !firstLoad ? (
+        {gameBoard}
+        {/* {!endGame && !login ? gameBoard : null} */}
+        {/* {endGame && !firstLoad ? (
           <Final resetGame={resetGameHandler} moves={moves} round={round} />
         ) : null}
-        {login && loginModal}
+        {login && loginModal} */}
       </Game>
     </div>
   );

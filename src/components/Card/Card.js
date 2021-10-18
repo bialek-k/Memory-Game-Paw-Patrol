@@ -22,16 +22,15 @@ const Card = (props) => {
 
   const showSecCard = (e) => {
     const index = parseInt(e.target.id);
-    // console.log("klik", index);
+    console.log("klik", index);
     const flipCard = props.cards.map((item, id, arr) => {
       if (item.id === index) {
-        const clickedCard = arr[index];
-        clickedCard.flipped = !clickedCard.flipped;
-        return clickedCard;
+        return (item.flipped = !item.flipped);
       }
-      return arr[index];
+      return item;
     });
-    console.log(flipCard);
+    // props.setCards(flipCard);
+    console.log("zmienione", flipCard);
   };
 
   // Add Card to new Array for compare
