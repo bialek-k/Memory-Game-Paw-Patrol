@@ -2,6 +2,7 @@ import React from "react";
 import classes from "../Card/Card.module.css";
 
 const Card = (props) => {
+  let clickArr = [];
   const showSecCard = () => {
     const id = props.id;
     const selectedCard = props.cards[id];
@@ -15,13 +16,6 @@ const Card = (props) => {
       return card;
     });
     props.setCards(flip);
-    compare(flip);
-  };
-
-  const compare = (flip) => {
-    // const clicked = flip.filter((card) => card.id === props.id);
-    // console.log(flip.filter((card) => (card.flipped = true)));
-    // props.setClickedCard([openedCard]);
   };
 
   // style of flipping card
