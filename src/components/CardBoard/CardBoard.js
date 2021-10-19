@@ -9,7 +9,6 @@ const CardBoard = (props) => {
   }, []);
 
   const cardsOnTable = props.cards.map((card, idx) => {
-    let showAll = props.firstLoad ? true : card.flipped;
     return (
       <Card
         id={idx}
@@ -18,7 +17,7 @@ const CardBoard = (props) => {
         name={card.name}
         setCards={props.setCards}
         photo={card.photo}
-        flipped={showAll}
+        flipped={card.flipped}
         clickedCard={props.clickedCard}
         setClickedCard={props.setClickedCard}
       />

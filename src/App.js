@@ -28,6 +28,11 @@ const App = () => {
   const [moves, setMoves] = useState(0);
   const [round, setRound] = useState(1);
 
+  useEffect(() => {
+    // console.log(cards);
+    console.log(clickedCard);
+  });
+
   // finding pairs of cards
   useEffect(() => {
     if (clickedCard.length > 1 && clickedCard.length < 3) {

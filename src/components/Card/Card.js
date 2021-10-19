@@ -2,44 +2,26 @@ import React from "react";
 import classes from "../Card/Card.module.css";
 
 const Card = (props) => {
-  // const showCard = (e, id) => {
-  //   const index = parseInt(e.target.id);
-  //   const flipCard = props.cards.map((item) => {
-  //     if (item.id === index) {
-  //       console.log("item", item);
-  //       const changeCardSide = {
-  //         ...item,
-  //         flipped: !item.flipped,
-  //       };
-  //       return changeCardSide;
-  //     }
-  //     return item;
-  //   });
-  //   console.log(flipCard);
-  //   props.setCards(flipCard);
-  //   compareHandler(flipCard, id);
-  // };
-  const showSecCard = (e) => {
-    const index = parseInt(e.target.id);
-    console.log("klik", index);
-    const flipCard = props.cards.map((item, id, arr) => {
-      if (item.id === index) {
-        const cardToFlip = arr[index];
-        cardToFlip.flipped = !cardToFlip.flipped;
-        console.log(cardToFlip);
-        return cardToFlip;
+  const showSecCard = () => {
+    const id = props.id;
+    const selectedCard = props.cards[id];
+    const flip = props.cards.map((card, id, arr) => {
+      if (arr[id] === selectedCard) {
+        return {
+          ...card,
+          flipped: !selectedCard.flipped,
+        };
       }
-      return item;
+      return card;
     });
-    props.setCards(flipCard);
-    // compareHandler(flipCard, props.id);
-    console.log("zmienione", flipCard);
+    props.setCards(flip);
+    compare(flip);
   };
 
-  // Add Card to new Array for compare
-  const compareHandler = (flipCard, id) => {
-    let clickedCard = flipCard.filter((card) => card.id === id);
-    props.setClickedCard([...clickedCard, ...props.clickedCard]);
+  const compare = (flip) => {
+    // const clicked = flip.filter((card) => card.id === props.id);
+    // console.log(flip.filter((card) => (card.flipped = true)));
+    // props.setClickedCard([openedCard]);
   };
 
   // style of flipping card
@@ -65,7 +47,7 @@ const Card = (props) => {
     <div
       className={classes.card}
       style={props.flipped ? cardFrontStyle : cardBackStyle}
-      onClick={(e, id) => showSecCard(e, props.id)}
+      onClick={() => showSecCard()}
     >
       {!props.flipped && (
         <div className={classes.question} id={props.id}>
