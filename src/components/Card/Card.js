@@ -13,7 +13,7 @@ const Card = (props) => {
           ...card,
           flipped: !selectedCard.flipped,
         };
-        props.setCardToComapre([props.cardToComapre, newObj]);
+        props.setCardToCompare([...props.cardToCompare, newObj]);
         return newObj;
       }
       return card;

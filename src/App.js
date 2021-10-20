@@ -16,8 +16,7 @@ const App = () => {
   const [cards, setCards] = useState(
     initialCards.sort(() => Math.random() - 0.4)
   );
-  const [clickedCard, setClickedCard] = useState([]);
-  const [cardToComapre, setCardToComapre] = useState([]);
+  const [cardToCompare, setCardToCompare] = useState([]);
   const [firstLoad, setFirstLoad] = useState(false);
   const [finalCards, setFinalCards] = useState(initialCards);
   const [cardFound, setCardFound] = useState([]);
@@ -29,10 +28,13 @@ const App = () => {
   const [moves, setMoves] = useState(0);
   const [round, setRound] = useState(1);
 
+  // CHECK IF FOUND PAIR OF CARDS
   useEffect(() => {
-    console.log("app.js", cards);
-    console.log("cardToCompare", cardToComapre);
-  }, [cards]);
+    // console.log(cardToCompare);
+    if (cardToCompare.length > 1) {
+      console.log(cardToCompare);
+    }
+  });
 
   // useEffect(() => {
   //   let selectedCard = cards.filter((card) => card.flipped === true);
@@ -67,7 +69,7 @@ const App = () => {
       setMoves(moves + 1);
     }
   });
-*/
+
   // check final
   useEffect(() => {
     const cardsOpened = finalCards.filter((card) => card.flipped);
@@ -84,13 +86,13 @@ const App = () => {
     setTimeout(() => {
       setCards(initialCards);
       setFinalCards(initialCards);
-      setClickedCard([]);
       setCardFound([]);
       setMoves(0);
       setEndGame(false);
       setRound(round + 1);
     }, 1700);
   };
+  */
 
   const loginModal = (
     <Login
@@ -114,11 +116,9 @@ const App = () => {
       <CardBoard
         cards={cards}
         setCards={setCards}
-        clickedCard={clickedCard}
-        setClickedCard={setClickedCard}
-        cardToCompare={cardToComapre}
-        setCardToComapre={setCardToComapre}
-        firstLoad={firstLoad}
+        cardToCompare={cardToCompare}
+        setCardToCompare={setCardToCompare}
+        // firstLoad={firstLoad}
       />
     </div>
   );
@@ -127,8 +127,8 @@ const App = () => {
     <div className={classes.wrapper}>
       <Game>
         {gameBoard}
-        {/* {!endGame && !login ? gameBoard : null} */}
-        {/* {endGame && !firstLoad ? (
+        {/* {!endGame && !login ? gameBoard : null}
+        {endGame && !firstLoad ? (
           <Final resetGame={resetGameHandler} moves={moves} round={round} />
         ) : null}
         {login && loginModal} */}
