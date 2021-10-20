@@ -30,9 +30,24 @@ const App = () => {
 
   // CHECK IF FOUND PAIR OF CARDS
   useEffect(() => {
-    // console.log(cardToCompare);
-    if (cardToCompare.length > 1) {
-      console.log(cardToCompare);
+    if (cardToCompare.length > 1 && cardToCompare.length < 3) {
+      if (
+        cardToCompare[0].id !== cardToCompare[1].id &&
+        cardToCompare[0].name === cardToCompare[1].name
+      ) {
+        const cardToFinal = cardToCompare[1];
+        // setCardFound([cardToFinal]);
+        setFinalCards([...cards]);
+        console.log("cards", cards);
+        console.log("finalCards", finalCards);
+        // setCardToCompare([]);
+      } else {
+        setCardToCompare([]);
+        // setTimeout(() => {
+        //   setCards([...finalCards]);
+        // }, 1000);
+      }
+      // setMoves(moves + 1);
     }
   });
 
