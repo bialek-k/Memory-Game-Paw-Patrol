@@ -16,6 +16,8 @@ const CardBoard = (props) => {
         cards={props.cards}
         name={card.name}
         setCards={props.setCards}
+        cardToCompare={props.cardToCompare}
+        setCardToComapre={props.setCardToComapre}
         photo={card.photo}
         flipped={card.flipped}
         clickedCard={props.clickedCard}

@@ -6,12 +6,15 @@ const Card = (props) => {
   const showSecCard = () => {
     const id = props.id;
     const selectedCard = props.cards[id];
+
     const flip = props.cards.map((card, id, arr) => {
       if (arr[id] === selectedCard) {
-        return {
+        const newObj = {
           ...card,
           flipped: !selectedCard.flipped,
         };
+        props.setCardToComapre([props.cardToComapre, newObj]);
+        return newObj;
       }
       return card;
     });
@@ -34,6 +37,7 @@ const Card = (props) => {
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     transform: "rotateY(0deg)",
+    pointerEvents: "none",
     transition: "0.6s",
   };
 

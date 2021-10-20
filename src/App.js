@@ -30,16 +30,21 @@ const App = () => {
   const [round, setRound] = useState(1);
 
   useEffect(() => {
-    let selectedCard = cards.filter((card) => card.flipped === true);
+    console.log("app.js", cards);
+    console.log("cardToCompare", cardToComapre);
+  }, [cards]);
 
-    if (selectedCard.length > 1) {
-      selectedCard.map((item, id, arr) => {
-        if (arr[0].name === arr[1].name) {
-          setCardToComapre(arr[0]);
-        }
-      });
-    }
-  });
+  // useEffect(() => {
+  //   let selectedCard = cards.filter((card) => card.flipped === true);
+
+  //   if (selectedCard.length > 1) {
+  //     selectedCard.map((item, id, arr) => {
+  //       if (arr[0].name === arr[1].name) {
+  //         setCardToComapre(arr[0]);
+  //       }
+  //     });
+  //   }
+  // });
 
   // finding pairs of cards
   /*
@@ -111,6 +116,8 @@ const App = () => {
         setCards={setCards}
         clickedCard={clickedCard}
         setClickedCard={setClickedCard}
+        cardToCompare={cardToComapre}
+        setCardToComapre={setCardToComapre}
         firstLoad={firstLoad}
       />
     </div>
