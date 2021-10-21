@@ -26,34 +26,13 @@
 .round span {
   font-size: 1.5rem;
 }
-/* 
-@media screen and (min-width: 768px) {
-  .container {
-    height: 120px;
-    width: 100%;
-  }
 
-  .player-stats {
-    font-size: 1.8rem;
+@media screen and (min-width: 350px) {
+  .container {
+    width: 100vw;
+    padding: 25px 10px;
   }
   .player {
-    font-size: 3rem;
+    font-size: 1.3rem;
   }
 }
-
-@media screen and (min-width: 1024px) and (min-height: 657px) {
-  .container {
-    width: 700px;
-    padding: 5px 30px;
-    border-radius: 0px 0px 15px 15px;
-  }
-  .player {
-    font-size: 1.9rem;
-  }
-} */
-
-/* @media screen and (min-width: 1440px) {
-  .container {
-    width: 950px;
-  }
-} */

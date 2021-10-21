@@ -1,4 +1,5 @@
 import React from "react";
+
 import classes from "../Card/Card.module.css";
 
 const Card = (props) => {
@@ -25,7 +26,6 @@ const Card = (props) => {
   const cardBackStyle = {
     transform: "rotateY(180deg)",
     background: "#099eda",
-    // background: "rgba(192, 192, 192, 0.596)",
     transition: "0.6s",
     backgroundSize: "25%",
     backgroundPosition: "bottom",
