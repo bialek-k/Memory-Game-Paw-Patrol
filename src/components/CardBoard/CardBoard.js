@@ -15,6 +15,8 @@ const CardBoard = (props) => {
         flipped={card.flipped}
         cardToCompare={props.cardToCompare}
         setCardToCompare={props.setCardToCompare}
+        frontCards={props.frontCards}
+        setFrontCards={props.setFrontCards}
       />
     );
   });

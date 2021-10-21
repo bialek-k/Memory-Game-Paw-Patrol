@@ -5,13 +5,13 @@ const Card = (props) => {
   let clickArr = [];
   const showSecCard = () => {
     const id = props.id;
-    const selectedCard = props.cards[id];
+    const pressCard = props.cards[id];
 
     const flip = props.cards.map((card, id, arr) => {
-      if (arr[id] === selectedCard) {
+      if (arr[id] === pressCard) {
         const newObj = {
           ...card,
-          flipped: !selectedCard.flipped,
+          flipped: !pressCard.flipped,
         };
         props.setCardToCompare([...props.cardToCompare, newObj]);
         return newObj;

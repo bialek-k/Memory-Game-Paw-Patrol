@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classes from "./App.module.css";
+
 import { initialCards } from "./components/Card/Photos";
 
 import CardBoard from "./components/CardBoard/CardBoard";
@@ -8,106 +9,56 @@ import Final from "./components/Final/Final";
 import Login from "./components/Login/Login";
 import Player from "./components/Player/Player";
 
-/*
- initialCards.sort(() => Math.random() - 0.4)
-*/
-
 const App = () => {
-  const [cards, setCards] = useState(
-    initialCards.sort(() => Math.random() - 0.4)
-  );
+  const [cards, setCards] = useState(initialCards);
   const [cardToCompare, setCardToCompare] = useState([]);
-  const [firstLoad, setFirstLoad] = useState(false);
+  const [frontCards, setFrontCards] = useState([]);
   const [finalCards, setFinalCards] = useState(initialCards);
-  const [cardFound, setCardFound] = useState([]);
   const [endGame, setEndGame] = useState(false);
   const [playerName, setPlayerName] = useState("");
   const [login, setLogin] = useState(true);
-  const [time, setTime] = useState(0);
-  const [timeOn, setTimeOn] = useState(false);
   const [moves, setMoves] = useState(0);
   const [round, setRound] = useState(1);
 
-  // CHECK IF FOUND PAIR OF CARDS
+  // MAIN LOGIC - FOUNDING PAIR OF CARDS
   useEffect(() => {
     if (cardToCompare.length > 1 && cardToCompare.length < 3) {
       if (
         cardToCompare[0].id !== cardToCompare[1].id &&
         cardToCompare[0].name === cardToCompare[1].name
       ) {
-        const cardToFinal = cardToCompare[1];
-        // setCardFound([cardToFinal]);
-        setFinalCards([...cards]);
-        console.log("cards", cards);
-        console.log("finalCards", finalCards);
-        // setCardToCompare([]);
-      } else {
         setCardToCompare([]);
-        // setTimeout(() => {
-        //   setCards([...finalCards]);
-        // }, 1000);
-      }
-      // setMoves(moves + 1);
-    }
-  });
-
-  // useEffect(() => {
-  //   let selectedCard = cards.filter((card) => card.flipped === true);
-
-  //   if (selectedCard.length > 1) {
-  //     selectedCard.map((item, id, arr) => {
-  //       if (arr[0].name === arr[1].name) {
-  //         setCardToComapre(arr[0]);
-  //       }
-  //     });
-  //   }
-  // });
-
-  // finding pairs of cards
-  /*
-  useEffect(() => {
-    if (clickedCard.length > 1 && clickedCard.length < 3) {
-      if (
-        clickedCard[0].id !== clickedCard[1].id &&
-        clickedCard[0].name === clickedCard[1].name
-      ) {
-        const cardToFinal = clickedCard[1];
-        // setCardFound([cardToFinal]);
         setFinalCards([...cards]);
-        setClickedCard([]);
       } else {
-        setClickedCard([]);
+        setFrontCards([]);
+        setCardToCompare([]);
         setTimeout(() => {
           setCards([...finalCards]);
-        }, 1000);
+        }, 500);
       }
       setMoves(moves + 1);
     }
-  });
+  }, [cardToCompare, cards, finalCards, moves]);
 
   // check final
   useEffect(() => {
     const cardsOpened = finalCards.filter((card) => card.flipped);
     if (cardsOpened.length > 11) {
-      // setTimeout(() => {
-      setCardFound([]);
-      setEndGame(true);
-      setTimeOn(false);
-      // }, 1500);
+      setTimeout(() => {
+        setEndGame(true);
+      }, 1000);
     }
-  }, [finalCards, endGame, timeOn]);
+  }, [finalCards, endGame]);
 
   const resetGameHandler = () => {
     setTimeout(() => {
       setCards(initialCards);
       setFinalCards(initialCards);
-      setCardFound([]);
       setMoves(0);
       setEndGame(false);
       setRound(round + 1);
-    }, 1700);
+    }, 500);
   };
-  */
 
   const loginModal = (
     <Login
@@ -120,20 +71,14 @@ const App = () => {
 
   const gameBoard = (
     <div className={classes.gameBoard}>
-      <Player
-        time={time}
-        setTime={setTime}
-        timeOn={timeOn}
-        playerName={playerName}
-        moves={moves}
-        round={round}
-      />
+      <Player playerName={playerName} moves={moves} round={round} />
       <CardBoard
         cards={cards}
         setCards={setCards}
         cardToCompare={cardToCompare}
         setCardToCompare={setCardToCompare}
-        // firstLoad={firstLoad}
+        frontCards={frontCards}
+        setFrontCards={setFrontCards}
       />
     </div>
   );
@@ -141,15 +86,18 @@ const App = () => {
   return (
     <div className={classes.wrapper}>
       <Game>
-        {gameBoard}
-        {/* {!endGame && !login ? gameBoard : null}
-        {endGame && !firstLoad ? (
+        {!endGame && !login ? gameBoard : null}
+        {endGame && (
           <Final resetGame={resetGameHandler} moves={moves} round={round} />
-        ) : null}
-        {login && loginModal} */}
+        )}
+        {login && loginModal}
       </Game>
     </div>
   );
 };
 
 export default App;
+
+/*
+ initialCards.sort(() => Math.random() - 0.4)
+*/

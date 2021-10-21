@@ -11,7 +11,6 @@ const Final = (props) => {
     <div className={classes.container}>
       <h1>Super!{props.playerName}</h1>
       <div className={classes.stats}>
-        <span>Your time: 15s</span>
         <span>You make {props.moves} moves</span>
         <span>in {props.round} rounds</span>
       </div>
