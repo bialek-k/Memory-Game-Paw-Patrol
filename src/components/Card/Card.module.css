@@ -1,9 +1,30 @@
 .card {
   display: flex;
   justify-content: center;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px #686868;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  transition: "0.6s";
+}
+
+.question {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 3rem;
   color: white;
-  align-items: center;
-  background-color: rgb(139, 139, 139);
-  border-radius: 5px;
+  transform: rotateY(180deg);
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
 }
+
+/*
+Color pallete
+	#bd221f
+  	#099eda
+	#fee301
+  	#abb7bd
+    	#ffffff
+      */

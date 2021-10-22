@@ -1,17 +1,27 @@
 import React from "react";
-import Card from "../Card/Card";
 import classes from "./CardBoard.module.css";
 
-import { initialCards } from "../CardBoard/Photos";
+import Card from "../Card/Card";
 
-const CardBoard = () => {
-  console.log(initialCards);
-
-  const singleCard = initialCards.map((card) => {
-    return <Card id={card.id} key={card.id} photo={card.photo} />;
+const CardBoard = (props) => {
+  const cardsOnTable = props.cards.map((card, idx) => {
+    return (
+      <Card
+        id={idx}
+        key={idx}
+        cards={props.cards}
+        setCards={props.setCards}
+        photo={card.photo}
+        flipped={card.flipped}
+        cardToCompare={props.cardToCompare}
+        setCardToCompare={props.setCardToCompare}
+        frontCards={props.frontCards}
+        setFrontCards={props.setFrontCards}
+      />
+    );
   });
 
-  return <div className={classes.CardBoard}>{singleCard}</div>;
+  return <div className={classes.CardBoard}>{cardsOnTable}</div>;
 };
 
 export default CardBoard;
