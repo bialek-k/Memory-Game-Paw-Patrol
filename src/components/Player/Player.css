@@ -27,7 +27,7 @@
   font-size: 1.5rem;
 }
 
-@media screen and (min-width: 350px) {
+@media screen and (max-width: 350px) {
   .container {
     width: 100vw;
     padding: 25px 10px;

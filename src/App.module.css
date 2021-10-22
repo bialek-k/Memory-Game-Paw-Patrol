@@ -27,7 +27,7 @@
   box-shadow: -1px 9px 22px -9px rgba(66, 68, 90, 1);
 }
 
-@media screen and (min-width: 350px) {
+@media screen and (max-width: 350px) {
   .gameBoard {
     border-radius: 0px;
     width: 100vw;

@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { PlaySound } from "../../helpers/sound";
+import ClickKey from "../../audio/clickKey.wav";
+
 import "./Login.css";
 
 const Login = (props) => {
@@ -6,6 +9,7 @@ const Login = (props) => {
 
   const inputName = (e) => {
     e.preventDefault();
+    PlaySound(ClickKey, 0.6);
     props.setPlayerName(e.target.value);
   };
 

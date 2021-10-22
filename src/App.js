@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+
+import { PlaySound } from "./helpers/sound";
+
 import classes from "./App.module.css";
 
 import { initialCards } from "./components/Card/Photos";
@@ -8,6 +11,10 @@ import Game from "./components/Game/Game";
 import Final from "./components/Final/Final";
 import Login from "./components/Login/Login";
 import Player from "./components/Player/Player";
+
+import FindSound from "./audio/find.wav";
+import BackSound from "./audio/back.wav";
+import WinSound from "./audio/win.wav";
 
 const App = () => {
   const [cards, setCards] = useState(initialCards);
@@ -27,9 +34,11 @@ const App = () => {
         cardToCompare[0].id !== cardToCompare[1].id &&
         cardToCompare[0].name === cardToCompare[1].name
       ) {
+        PlaySound(FindSound, 0.5, 300);
         setCardToCompare([]);
         setFinalCards([...cards]);
       } else {
+        PlaySound(BackSound, 0.5, 300);
         setFrontCards([]);
         setCardToCompare([]);
         setTimeout(() => {
@@ -45,6 +54,7 @@ const App = () => {
     const cardsOpened = finalCards.filter((card) => card.flipped);
     if (cardsOpened.length > 11) {
       setTimeout(() => {
+        PlaySound(WinSound, 0.4);
         setEndGame(true);
       }, 1000);
     }
