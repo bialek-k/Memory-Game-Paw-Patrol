@@ -9,7 +9,10 @@ import classes from "../Card/Card.module.css";
 const Card = (props) => {
   let clickArr = [];
   const showSecCard = () => {
-    PlaySound(ClickSound, 0.6);
+    {
+      props.volume && PlaySound(ClickSound, 0.6);
+    }
+
     const id = props.id;
     const pressCard = props.cards[id];
 

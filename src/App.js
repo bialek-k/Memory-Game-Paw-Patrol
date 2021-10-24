@@ -14,7 +14,6 @@ import Player from "./components/Player/Player";
 
 import FindSound from "./audio/find.wav";
 import BackSound from "./audio/back.wav";
-import WinSound from "./audio/win.wav";
 
 const App = () => {
   const [cards, setCards] = useState(initialCards);
@@ -26,6 +25,7 @@ const App = () => {
   const [login, setLogin] = useState(true);
   const [moves, setMoves] = useState(0);
   const [round, setRound] = useState(1);
+  const [volume, setVolume] = useState(true);
 
   // MAIN LOGIC - FOUNDING PAIR OF CARDS
   useEffect(() => {
@@ -34,11 +34,17 @@ const App = () => {
         cardToCompare[0].id !== cardToCompare[1].id &&
         cardToCompare[0].name === cardToCompare[1].name
       ) {
-        PlaySound(FindSound, 0.5, 300);
+        {
+          volume && PlaySound(FindSound, 0.5, 300);
+        }
+
         setCardToCompare([]);
         setFinalCards([...cards]);
       } else {
-        PlaySound(BackSound, 0.5, 300);
+        {
+          volume && PlaySound(BackSound, 0.5, 300);
+        }
+
         setFrontCards([]);
         setCardToCompare([]);
         setTimeout(() => {
@@ -54,7 +60,6 @@ const App = () => {
     const cardsOpened = finalCards.filter((card) => card.flipped);
     if (cardsOpened.length > 11) {
       setTimeout(() => {
-        PlaySound(WinSound, 0.4);
         setEndGame(true);
       }, 1000);
     }
@@ -81,9 +86,16 @@ const App = () => {
 
   const gameBoard = (
     <div className={classes.gameBoard}>
-      <Player playerName={playerName} moves={moves} round={round} />
+      <Player
+        playerName={playerName}
+        moves={moves}
+        round={round}
+        volume={volume}
+        setVolume={setVolume}
+      />
       <CardBoard
         cards={cards}
+        volume={volume}
         setCards={setCards}
         cardToCompare={cardToCompare}
         setCardToCompare={setCardToCompare}
@@ -98,7 +110,12 @@ const App = () => {
       <Game>
         {!endGame && !login ? gameBoard : null}
         {endGame && (
-          <Final resetGame={resetGameHandler} moves={moves} round={round} />
+          <Final
+            resetGame={resetGameHandler}
+            moves={moves}
+            round={round}
+            volume={volume}
+          />
         )}
         {login && loginModal}
       </Game>

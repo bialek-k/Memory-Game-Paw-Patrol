@@ -1,20 +1,31 @@
 import React, { useEffect } from "react";
 import "./Player.css";
 
-export const Player = ({ time, setTime, timeOn, playerName, moves, round }) => {
-  // Something is wrong with this
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
+import { faVolumeOff } from "@fortawesome/free-solid-svg-icons";
 
-  const getSec = () => Math.floor((time / 1000) % 60);
+export const Player = (props) => {
+  const volumeHandler = () => {
+    props.setVolume((prevState) => !prevState);
+  };
 
   return (
     <>
       <div className="container">
-        <div className="player">{playerName}</div>
+        <div className="volume">
+          <FontAwesomeIcon
+            icon={props.volume ? faVolumeUp : faVolumeOff}
+            style={!props.volume && { color: "rgba(255,255,255,0.7)" }}
+            onClick={volumeHandler}
+          />
+        </div>
+        <div className="player">{props.playerName}</div>
         <div className="round">
-          <span>Round: {round}</span>
+          <span>Round: {props.round}</span>
         </div>
         <div className="player-stats">
-          <span>Moves: {moves}</span>
+          <span>Moves: {props.moves}</span>
         </div>
       </div>
     </>

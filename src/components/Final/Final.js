@@ -1,8 +1,13 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { PlaySound } from "../../helpers/sound";
+import WinSound from "../../audio/win.wav";
 import classes from "./Final.module.css";
 
 const Final = (props) => {
+  useEffect(() => {
+    props.volume && PlaySound(WinSound, 0.4);
+  }, []);
+
   const resetGame = () => {
     props.resetGame();
   };
