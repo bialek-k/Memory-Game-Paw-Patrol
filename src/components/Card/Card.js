@@ -1,10 +1,18 @@
 import React from "react";
 
+import { PlaySound } from "../../helpers/sound";
+
+import ClickSound from "../../audio/click.wav";
+
 import classes from "../Card/Card.module.css";
 
 const Card = (props) => {
   let clickArr = [];
   const showSecCard = () => {
+    {
+      props.volume && PlaySound(ClickSound, 0.6);
+    }
+
     const id = props.id;
     const pressCard = props.cards[id];
 

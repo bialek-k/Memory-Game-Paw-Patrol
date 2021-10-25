@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+
+import { PlaySound } from "./helpers/sound";
 import classes from "./App.module.css";
 
 import { initialCards } from "./components/Card/Photos";
@@ -8,6 +10,9 @@ import Game from "./components/Game/Game";
 import Final from "./components/Final/Final";
 import Login from "./components/Login/Login";
 import Player from "./components/Player/Player";
+
+import FindSound from "./audio/find.wav";
+import BackSound from "./audio/back.wav";
 
 const App = () => {
   const [cards, setCards] = useState(initialCards);
@@ -19,17 +24,19 @@ const App = () => {
   const [login, setLogin] = useState(true);
   const [moves, setMoves] = useState(0);
   const [round, setRound] = useState(1);
+  const [volume, setVolume] = useState(true);
 
-  // MAIN LOGIC - FOUNDING PAIR OF CARDS
   useEffect(() => {
     if (cardToCompare.length > 1 && cardToCompare.length < 3) {
       if (
         cardToCompare[0].id !== cardToCompare[1].id &&
         cardToCompare[0].name === cardToCompare[1].name
       ) {
+        volume && PlaySound(FindSound, 0.5, 300);
         setCardToCompare([]);
         setFinalCards([...cards]);
       } else {
+        volume && PlaySound(BackSound, 0.5, 300);
         setFrontCards([]);
         setCardToCompare([]);
         setTimeout(() => {
@@ -38,7 +45,7 @@ const App = () => {
       }
       setMoves(moves + 1);
     }
-  }, [cardToCompare, cards, finalCards, moves]);
+  }, [cardToCompare, cards, finalCards, moves, volume]);
 
   // check final
   useEffect(() => {
@@ -71,9 +78,16 @@ const App = () => {
 
   const gameBoard = (
     <div className={classes.gameBoard}>
-      <Player playerName={playerName} moves={moves} round={round} />
+      <Player
+        playerName={playerName}
+        moves={moves}
+        round={round}
+        volume={volume}
+        setVolume={setVolume}
+      />
       <CardBoard
         cards={cards}
+        volume={volume}
         setCards={setCards}
         cardToCompare={cardToCompare}
         setCardToCompare={setCardToCompare}
@@ -88,7 +102,12 @@ const App = () => {
       <Game>
         {!endGame && !login ? gameBoard : null}
         {endGame && (
-          <Final resetGame={resetGameHandler} moves={moves} round={round} />
+          <Final
+            resetGame={resetGameHandler}
+            moves={moves}
+            round={round}
+            volume={volume}
+          />
         )}
         {login && loginModal}
       </Game>

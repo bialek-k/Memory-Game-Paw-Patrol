@@ -8,14 +8,15 @@
   justify-content: center;
 }
 
-@media screen and (min-width: 350px) {
+@media screen and (max-width: 400px) {
   .CardBoard {
-    width: 50vw;
     height: 100vh;
-    gap: 10px;
+    margin-top: 100px;
+    /* width: 100vw; */
+    /* background-color: blue; */
     grid-template-columns: repeat(4, 80px);
     grid-template-rows: repeat(3, 120px);
-    /* background-color: red; */
+    gap: 12px;
     /* padding: 10px; */
   }
 }

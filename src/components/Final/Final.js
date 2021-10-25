@@ -1,8 +1,13 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { PlaySound } from "../../helpers/sound";
+import WinSound from "../../audio/win.wav";
 import classes from "./Final.module.css";
 
 const Final = (props) => {
+  useEffect(() => {
+    props.volume && PlaySound(WinSound, 0.4);
+  }, []);
+
   const resetGame = () => {
     props.resetGame();
   };
@@ -16,9 +21,9 @@ const Final = (props) => {
       </div>
       <div className={classes.buttons}>
         <button className={classes.reset} onClick={resetGame}>
-          Gram dalej
+          Play again
         </button>
-        <button className={classes.end}>Koniec gry</button>
+        <button className={classes.end}>The end</button>
       </div>
     </div>
   );

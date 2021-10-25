@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.login-wrapper {
+.loginWrapper {
   display: flex;
   flex-direction: column;
   /* background-color: #099eda; */
@@ -45,7 +45,7 @@
   letter-spacing: 3px;
 }
 
-.login-modal {
+.loginModal {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,13 +54,13 @@
   width: 100%;
 }
 
-.login-modal p {
+.loginModal p {
   font-size: 1.8rem;
   color: white;
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
 }
 
-.login-modal input {
+.loginModal input {
   background: white;
   border: none;
   width: 50%;
@@ -69,11 +69,11 @@
   transition: 0.2s;
 }
 
-.login-modal input:hover {
+.loginModal input:hover {
   transform: scale(1.05);
 }
 
-.login-modal button {
+.loginModal button {
   background: none;
   border: none;
   letter-spacing: 0.3rem;
@@ -85,7 +85,7 @@
   font-size: 2rem;
   transition: 0.2s;
 }
-.login-modal button:hover {
+.loginModal button:hover {
   letter-spacing: 0.4rem;
   transform: scale(1.05);
 }
@@ -99,7 +99,7 @@ textarea {
   font-size: 1.5rem;
 }
 
-.login-guest {
+.loginGuest {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.589);
@@ -108,7 +108,7 @@ textarea {
   /* text-shadow: 2px 2px 0px rgba(0, 0, 0, 1); */
   transition: 0.2s;
 }
-.login-guest:hover {
+.loginGuest:hover {
   color: white;
   letter-spacing: 0.2rem;
 }
@@ -122,22 +122,22 @@ textarea {
 }
 
 @media screen and (min-width: 1024px) {
-  .login-modal input {
+  .loginModal input {
     background: white;
     border: none;
     width: 50%;
     padding: 12px 0px;
     border-radius: 5px;
   }
-  .login-modal p {
+  .loginModal p {
     font-size: 2.3rem;
   }
-  .login-guest {
+  .loginGuest {
     font-size: 1.4rem;
     letter-spacing: 6px;
   }
 
-  .login-modal {
+  .loginModal {
     height: 300px;
   }
 
@@ -158,7 +158,7 @@ textarea {
 }
 
 @media screen and (min-width: 1440px) {
-  .login-modal input {
+  .loginModal input {
     background: white;
     border: none;
     width: 35%;

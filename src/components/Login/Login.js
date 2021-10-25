@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import "./Login.css";
+import { PlaySound } from "../../helpers/sound";
+import ClickKey from "../../audio/clickKey.wav";
+
+import classes from "./Login.module.css";
 
 const Login = (props) => {
   const [error, setError] = useState("");
 
   const inputName = (e) => {
     e.preventDefault();
+    PlaySound(ClickKey, 0.6);
     props.setPlayerName(e.target.value);
   };
 
@@ -18,28 +22,26 @@ const Login = (props) => {
       }, 1800);
     } else {
       props.setLogin(false);
-      // props.setStartGame(true);
     }
   };
 
-  const errorMsg = <div className="error">Please write your name</div>;
+  const errorMsg = <div className={classes.error}>Please write your name</div>;
 
   const guestName = () => {
     props.setPlayerName("Great Player");
     props.setLogin(false);
-    // props.setStartGame(true);
   };
 
   return (
-    <div className="login-wrapper">
-      <form className="login-modal" onSubmit={submitName}>
+    <div className={classes.loginWrapper}>
+      <form className={classes.loginModal} onSubmit={submitName}>
         <p>Write your name</p>
         {error ? errorMsg : null}
         <input type="text" onChange={inputName} />
         <button type="submit" className="play">
           Play!
         </button>
-        <h3 className="login-guest" onClick={guestName}>
+        <h3 className={classes.loginGuest} onClick={guestName}>
           or play as a guest
         </h3>
       </form>
