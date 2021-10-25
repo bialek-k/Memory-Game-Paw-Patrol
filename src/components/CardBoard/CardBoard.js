@@ -8,9 +8,7 @@ import Card from "../Card/Card";
 
 const CardBoard = (props) => {
   useEffect(() => {
-    {
-      props.volume && PlaySound(NewGameSound, 0.5);
-    }
+    props.volume && PlaySound(NewGameSound, 0.5);
   }, []);
 
   const cardsOnTable = props.cards.map((card, idx) => {
@@ -30,7 +28,6 @@ const CardBoard = (props) => {
       />
     );
   });
-
   return <div className={classes.CardBoard}>{cardsOnTable}</div>;
 };
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import { PlaySound } from "./helpers/sound";
-
 import classes from "./App.module.css";
 
 import { initialCards } from "./components/Card/Photos";
@@ -27,24 +26,17 @@ const App = () => {
   const [round, setRound] = useState(1);
   const [volume, setVolume] = useState(true);
 
-  // MAIN LOGIC - FOUNDING PAIR OF CARDS
   useEffect(() => {
     if (cardToCompare.length > 1 && cardToCompare.length < 3) {
       if (
         cardToCompare[0].id !== cardToCompare[1].id &&
         cardToCompare[0].name === cardToCompare[1].name
       ) {
-        {
-          volume && PlaySound(FindSound, 0.5, 300);
-        }
-
+        volume && PlaySound(FindSound, 0.5, 300);
         setCardToCompare([]);
         setFinalCards([...cards]);
       } else {
-        {
-          volume && PlaySound(BackSound, 0.5, 300);
-        }
-
+        volume && PlaySound(BackSound, 0.5, 300);
         setFrontCards([]);
         setCardToCompare([]);
         setTimeout(() => {
@@ -53,7 +45,7 @@ const App = () => {
       }
       setMoves(moves + 1);
     }
-  }, [cardToCompare, cards, finalCards, moves]);
+  }, [cardToCompare, cards, finalCards, moves, volume]);
 
   // check final
   useEffect(() => {

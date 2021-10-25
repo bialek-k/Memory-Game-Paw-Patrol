@@ -16,7 +16,7 @@
   color: white;
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
 }
-.player-stats {
+.playerStats {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,10 +30,11 @@
   font-size: 2rem;
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 400px) {
   .container {
     width: 100vw;
-    padding: 25px 10px;
+    padding: 25px 15px;
+    display: flex;
   }
   .player {
     font-size: 1.3rem;

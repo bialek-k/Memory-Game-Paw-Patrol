@@ -21,9 +21,9 @@ const Final = (props) => {
       </div>
       <div className={classes.buttons}>
         <button className={classes.reset} onClick={resetGame}>
-          Gram dalej
+          Play again
         </button>
-        <button className={classes.end}>Koniec gry</button>
+        <button className={classes.end}>The end</button>
       </div>
     </div>
   );
