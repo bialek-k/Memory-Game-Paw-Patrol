@@ -9,6 +9,6 @@ It's not finished yet, but it works
 ![3](https://user-images.githubusercontent.com/57173170/138703629-1037c30d-e94c-4947-a01d-ca4d02c3d9ef.jpg)
 
 ## Want to play ? 
-https://bialek-k.github.io/React-Memory-Game/
+https://bialek-k.github.io/Memory-Game-Paw-Patrol/
 
 ## Enjoy! :)
