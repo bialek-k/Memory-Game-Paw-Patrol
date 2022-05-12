@@ -18,4 +18,4 @@ export const initialCards = [
   { id: 9, photo: Rubble, name: "Rubble", flipped: false },
   { id: 10, photo: Skye, name: "Skye", flipped: false },
   { id: 11, photo: Zuma, name: "Zuma", flipped: false },
-];
+].sort(() => Math.random() - 0.5);
